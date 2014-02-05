@@ -9,6 +9,14 @@ function DelegatorTaskModel(name, done, isnew) {
 	self.date = ko.observable(new Date(Date.now()));
 }
 
+function projectModel(color,name){
+	var self=this;
+	self.color=color;
+	self.name=name;
+
+
+}
+
 function filterModel(val, id, parent, filtertype) {
 	var self = this;
 	self.name = val;

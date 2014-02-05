@@ -17,7 +17,7 @@ function DelegatorViewModel() {
 	self.filteredTasks = ko.observableArray();
 	self.currentTasks = ko.observableArray();
 	self.settings = getSettings();	
-	
+	self.projects =  ko.observableArray();		
 	self.years(getYears());
 
 	self.selectMonthFilter = function (item) {

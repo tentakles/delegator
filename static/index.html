@@ -139,13 +139,10 @@
 	<br><br>
 	<button type="button" data-bind="click:$root.saveSettings">Spara</button> 
 	<button type="button" data-bind="click:$root.cancelSettings">Avbryt</button> 
-		
-	
+			
 	</div>
-	
-	
-	<!-- /ko -->
-	
+		
+	<!-- /ko -->	
 	
 	<!-- ko if: currentTask -->
 	
@@ -154,7 +151,18 @@
 	Namn: <input type="text" data-bind="value:name"><br>
 	Klar: <input type="checkbox" data-bind="checked:done"><br>
 	
-	Projekt: <select><option>default</option></select> <button>Redigera projekt</button><br>
+	Projekt: 
+	
+	<select data-bind="options: $root.projects,
+                   optionsText: function(item) {
+                       return item.name 
+                   },
+                   value: project,
+                   optionsCaption: 'Välj projekt...'">
+	</select>
+	
+	
+	<select><option>default</option></select><option>default</option></select><option>default</option></select> <button>Redigera projekt</button><br>
 	Prioritet:  <select><option>Low</option><option selected="selected">Medium</option><option>High</option></select><br>
 	Datum: År, Månad, Dag, Tid<br>
 	
@@ -178,7 +186,7 @@
 	<div id="taskArea">
 	<div data-bind="foreach: filteredTasks">
 
-   <div class="taskItem">
+   <div class="taskItem" data-bind="style:{'background-color': project()!=undefined? project().color:'#dddddd'}">
    <input class="checkbox" type="checkbox" data-bind="checked: done">
         <span data-bind="text: name"></span>
 		

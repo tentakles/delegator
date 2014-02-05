@@ -209,9 +209,14 @@ $(function () {
 	delegatorViewModel.currentTasks.push(new DelegatorTaskModel("Bert", true, false));
 	delegatorViewModel.currentTasks.push(new DelegatorTaskModel("Ernie 2", true, false));
 
+	delegatorViewModel.projects.push(new projectModel("#ff00ff","Jobb"));
+	delegatorViewModel.projects.push(new projectModel("#ffff00","Hem"));
+	delegatorViewModel.projects.push(new projectModel("#00ffff","Hobby"));	
+	
 	resizeFilters();
 	makeDraggable();
 	makeDroppable();
 });
+
 
 

@@ -44,7 +44,7 @@
     
 		    <div class="listFilter" data-bind="click: $parent.selectYearFilter,css:{selected: selected}">
 			
-				 <span  class="left" data-bind="text: name"></span>
+				 <span data-bind="text: name"></span>
 				 <span class="bold ball right" data-bind="text:$root.getFilterDateCount($data),visible:$root.getFilterDateCount($data)>0"></span>
 			
 			</div>
@@ -65,7 +65,7 @@
 			
 			<div class="listFilter" data-bind="click: $parent.selectMonthFilter,css:{selected: selected}">
 			
-				 <span  class="left" data-bind="text: name"></span>
+				 <span  data-bind="text: name"></span>
 				 <span class="bold ball  right" data-bind="text:$root.getFilterDateCount($data),visible:$root.getFilterDateCount($data)>0"></span>
 			
 			</div>
@@ -76,15 +76,14 @@
 	<!-- /ko -->
 		
 	<!-- ko if: settings.showWeeks -->
-	
-		
+			
 		<div class="upperListContainer ">
 	<div class="bold centered">Vecka</div>
 	
 			<div data-bind="foreach: weeks"  class="upperList">
       <div class="listFilter" data-bind="click: $parent.selectWeekFilter, css:{selected: selected}">
 	  	  
-	   <span  class="left" data-bind="text: 'V. ' +name"></span>	
+	   <span   data-bind="text: 'V. ' +name"></span>	
 		<span class="bold  ball right" data-bind="text:$root.getFilterDateCount($data),visible:$root.getFilterDateCount($data)>0"></span>
 			
 	  </div>
@@ -95,8 +94,7 @@
 	<!-- /ko -->
 	
 		<!-- ko if: settings.showDays -->
-	
-	
+		
 			<div class="upperListContainer centered"><span class="bold">Dag</span>		
 	 		<div data-bind="foreach: days"  class="upperList">
    
@@ -106,15 +104,11 @@
 	
 	</div>
 	<!-- /ko -->
-	
-	
-	
-	
+		
 	</div>
 	
 	
 	<div class="cleared">&nbsp;</div>
-
 	
 	<!-- ko if: settings.showSettings -->
 	
@@ -134,8 +128,7 @@
 	Visa vid start: <br><input type="radio" name="showOnStart" value="today"   data-bind="checked:showOnStart"> Idag<br>
 	
 	<input type="radio" name="showOnStart" value="last"   data-bind="checked:showOnStart"> Senast visad<br>
-	
-	
+		
 	<br><br>
 	<button type="button" data-bind="click:$root.saveSettings">Spara</button> 
 	<button type="button" data-bind="click:$root.cancelSettings">Avbryt</button> 
@@ -161,7 +154,7 @@
                    optionsCaption: 'Välj projekt...'">
 	</select>
 	<button>Redigera projekt</button><br>
-	Prioritet:  <select><option>Low</option><option selected="selected">Medium</option><option>High</option></select><br>
+	Prioritet:  <select data-bind="value:priority"><option value="0">Låg</option><option value="1">Medel</option><option  value="2">Hög</option></select><br>
 	Datum: År, Månad, Dag, Tid<br>
 	
 	Anteckningar: <textarea  data-bind="value:notes"></textarea><br>
@@ -187,7 +180,7 @@
    <div class="taskItem" data-bind="style:{'background-color': project()!=undefined? project().color:'#dddddd'}">
    <input class="checkbox" type="checkbox" data-bind="checked: done">
         <span data-bind="text: name"></span>
-		
+				
 		<!--
 		<span data-bind="text: '2014-01-29 18:24'" class="bold"></span>
 		<span data-bind="text: 'Mitt fina projekt'"></span>	
@@ -195,6 +188,14 @@
 		-->		
 
 	<div style="float:right;">
+	
+
+			<div data-bind="visible:priority()=='0'" class="left taskicon"><span class="ui-icon  ui-icon-triangle-1-s"></span></div>
+			<div data-bind="visible:priority()=='1'"  class="left taskicon"><span class="ui-icon ui-icon-minusthick" data-bind="visible:priority()==1"></span></div>	
+			<div data-bind="visible:priority()=='2'"  class="left taskicon"><span class="ui-icon  ui-icon-triangle-1-n" data-bind="visible:priority()==2"></span></div>
+
+	
+	
 		<button class="buttonheight" type="button" data-bind="click:$root.editTask"><span class="ui-icon ui-icon-pencil"></span></button> 
 		<button class="buttonheight" type="button" data-bind="click:$root.removeTask"><span class="ui-icon ui-icon-trash"></span></button> 
 	</div>

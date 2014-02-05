@@ -94,7 +94,12 @@ function DelegatorViewModel() {
 		makeDraggable();
 	};
 
-	self.sortTasks = function () {};
+	self.sortTasks = function () {
+	
+	
+	 self.filteredTasks.sort(function (l, r) { return l.priority() < r.priority() ? 1 : -1 })
+	
+	};
 
 	self.editTask = function (item) {
 

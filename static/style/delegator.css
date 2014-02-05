@@ -19,6 +19,10 @@ border-color:#aaaaaa !important;
 border-style:dashed !important;
 }
 
+.left{
+float:left;
+}
+
 .right{
 float:right;
 }
@@ -54,9 +58,9 @@ min-width: 25px;
 text-align: center;
 }
 
-.left{
-text-align:left;
-padding-left:30px;
+.taskicon{
+padding-top: 7px;
+
 }
 
 #upperheaderArea{

@@ -2,7 +2,7 @@ function DelegatorTaskModel(name, done, isnew) {
 	var self = this;
 	self.name = ko.observable(name);
 	self.done = ko.observable(done);
-	self.priority = ko.observable(0);
+	self.priority = ko.observable(1);
 	self.notes = ko.observable("");
 	self.project = ko.observable();
 	self.new = ko.observable(isnew);

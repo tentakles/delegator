@@ -39,7 +39,7 @@
 	
 		<div class="upperListContainer">
 	
-	<span class="bold centered">År</span>
+	<div class="bold centered">År</div>
 			<div data-bind="foreach: years" class="upperList"> 
     
 		    <div class="listFilter" data-bind="click: $parent.selectYearFilter,css:{selected: selected}">
@@ -58,7 +58,7 @@
 			<!-- ko if: settings.showMonths -->	
 		
 		<div class="upperListContainer">
-	<span class="bold centered">Månad</span>
+	<div class="bold centered">Månad</div>
 	
 			<div data-bind="foreach: months"  class="upperList">
 			
@@ -79,7 +79,7 @@
 	
 		
 		<div class="upperListContainer ">
-	<span class="bold centered">Vecka</span>
+	<div class="bold centered">Vecka</div>
 	
 			<div data-bind="foreach: weeks"  class="upperList">
       <div class="listFilter" data-bind="click: $parent.selectWeekFilter, css:{selected: selected}">

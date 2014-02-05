@@ -1,0 +1,106 @@
+body{
+font-family:verdana;
+font-size:large;
+padding:0px;
+margin:0px;
+}
+
+.taskItem{
+margin:8px;
+padding:4px;
+
+width:330px;
+background-color:#aaaaaa;
+border-radius:5px;
+}
+
+.filterHover{
+border-color:#aaaaaa !important;
+border-style:dashed !important;
+}
+
+.right{
+float:right;
+}
+
+.debug{
+background-color:#ff00ff;
+}
+
+.checkbox{
+width:25px;
+height:25px;
+}
+
+.listFilter{
+background-color:#eeeeee;
+margin:5px;
+padding:10px;
+border-radius:5px;
+border-color:#ffffff;
+border-style:solid;
+border-width:2px;
+}
+
+.buttonheight{
+height:30px;
+}
+
+.ball{
+background-color: #aaaaaa;
+padding: 2px;
+border-radius: 13px;
+min-width: 25px;
+text-align: center;
+}
+
+.left{
+text-align:left;
+padding-left:30px;
+}
+
+#upperheaderArea{
+background-color:#ffcc00;
+font-weight:bold;
+margin:0px;
+text-align: center;
+padding:4px;
+color:#ffffff;
+font-size:larger;
+}
+
+.selected{
+background-color:#33cc33;
+}
+
+.upperList{
+height:200px;
+overflow-x: none;
+overflow-y: scroll;
+}
+
+.bold{
+font-weight:bold;
+}
+
+.centered{
+text-align:center;
+}
+
+.upperListContainer{
+background-color:#ffffff;
+float:left;
+margin:5px;
+height:200px;
+
+overflow-x: none;
+overflow-y: none;
+}
+
+.ui-button-text-only .ui-button-text {
+padding: 0em 0.4em;
+}
+
+.cleared{
+clear:both;
+}

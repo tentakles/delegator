@@ -1,0 +1,210 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DELEGATOR</title>
+	
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+	
+	<script type="text/javascript" src="bower_components/knockout/knockout.js"></script>
+	<script type="text/javascript" src="bower_components/knockout/knockout.mapping-latest.js"></script>
+	
+	<script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
+	
+	<script type="text/javascript" src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
+	<script type="text/javascript" src="scripts/jquery.ui.touch-punch.min.js"></script>
+	
+	<script type="text/javascript" src="scripts/DelegatorModels.js"></script>
+	<script type="text/javascript" src="scripts/DelegatorViewModels.js"></script>
+
+	<script type="text/javascript" src="scripts/delegator.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/ui-lightness/jquery-ui.min.css" />
+	<link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/ui-lightness/jquery.ui.theme.css" />
+	<link rel="stylesheet" type="text/css" href="style/delegator.css" />
+
+	</head>
+<body>
+	<div id="upperheaderArea">
+	<!-- DELEGATOR DELERAPTOR -->
+	
+	<img src="img/logo.png">
+	
+	</div>
+	
+	<div id="upperListArea">	
+	
+				<!-- ko if: settings.showYears -->
+	
+		<div class="upperListContainer">
+	
+	<span class="bold centered">År</span>
+			<div data-bind="foreach: years" class="upperList"> 
+    
+		    <div class="listFilter" data-bind="click: $parent.selectYearFilter,css:{selected: selected}">
+			
+				 <span  class="left" data-bind="text: name"></span>
+				 <span class="bold ball right" data-bind="text:$root.getFilterDateCount($data),visible:$root.getFilterDateCount($data)>0"></span>
+			
+			</div>
+
+	</div>	
+	
+	</div>
+	
+				<!-- /ko -->
+	
+			<!-- ko if: settings.showMonths -->	
+		
+		<div class="upperListContainer">
+	<span class="bold centered">Månad</span>
+	
+			<div data-bind="foreach: months"  class="upperList">
+			
+			
+			<div class="listFilter" data-bind="click: $parent.selectMonthFilter,css:{selected: selected}">
+			
+				 <span  class="left" data-bind="text: name"></span>
+				 <span class="bold ball  right" data-bind="text:$root.getFilterDateCount($data),visible:$root.getFilterDateCount($data)>0"></span>
+			
+			</div>
+
+	</div>
+	
+	</div>	
+	<!-- /ko -->
+		
+	<!-- ko if: settings.showWeeks -->
+	
+		
+		<div class="upperListContainer ">
+	<span class="bold centered">Vecka</span>
+	
+			<div data-bind="foreach: weeks"  class="upperList">
+      <div class="listFilter" data-bind="click: $parent.selectWeekFilter, css:{selected: selected}">
+	  	  
+	   <span  class="left" data-bind="text: 'V. ' +name"></span>	
+		<span class="bold  ball right" data-bind="text:$root.getFilterDateCount($data),visible:$root.getFilterDateCount($data)>0"></span>
+			
+	  </div>
+
+	</div>
+	
+	</div>	
+	<!-- /ko -->
+	
+		<!-- ko if: settings.showDays -->
+	
+	
+			<div class="upperListContainer centered"><span class="bold">Dag</span>		
+	 		<div data-bind="foreach: days"  class="upperList">
+   
+         <div class="listFilter" data-bind="click: $parent.selectDayFilter, text: name, css:{selected: selected}"></div>    
+   
+	</div>
+	
+	</div>
+	<!-- /ko -->
+	
+	
+	
+	
+	</div>
+	
+	
+	<div class="cleared">&nbsp;</div>
+
+	
+	<!-- ko if: settings.showSettings -->
+	
+	<div id="taskEditor"  data-bind="with: settings">
+	<h2>Inställningar</h2>
+	<h3>Aktiva filter</h3>
+	<input type="checkbox" data-bind="checked:showProjects"> Visa projekt<br>
+	
+	<input type="checkbox" data-bind="checked:showYears"> Visa år<br> 
+	<input type="checkbox" data-bind="checked:showMonths"> Visa månader<br> 
+	<input type="checkbox" data-bind="checked:showWeeks"> Visa veckor<br>
+	 
+	<input type="checkbox" data-bind="checked:showDays"> Visa dagar<br>
+	<input type="checkbox" data-bind="checked:showTime"> Visa tid<br>
+	<br>
+	<input type="checkbox"  data-bind="checked:moveMissed"> Flytta fram missade<br><br>
+	Visa vid start: <br><input type="radio" name="showOnStart" value="today"   data-bind="checked:showOnStart"> Idag<br>
+	
+	<input type="radio" name="showOnStart" value="last"   data-bind="checked:showOnStart"> Senast visad<br>
+	
+	
+	<br><br>
+	<button type="button" data-bind="click:$root.saveSettings">Spara</button> 
+	<button type="button" data-bind="click:$root.cancelSettings">Avbryt</button> 
+		
+	
+	</div>
+	
+	
+	<!-- /ko -->
+	
+	
+	<!-- ko if: currentTask -->
+	
+	<div id="taskEditor"  data-bind="with: currentTask">
+	<h2>Redigera uppgift</h2>
+	Namn: <input type="text" data-bind="value:name"><br>
+	Klar: <input type="checkbox" data-bind="checked:done"><br>
+	
+	Projekt: <select><option>default</option></select> <button>Redigera projekt</button><br>
+	Prioritet:  <select><option>Low</option><option selected="selected">Medium</option><option>High</option></select><br>
+	Datum: År, Månad, Dag, Tid<br>
+	
+	Anteckningar: <textarea  data-bind="value:notes"></textarea><br>
+		
+	<button type="button" data-bind="click:$root.saveCurrentTask">Spara</button> 
+	<button type="button" data-bind="click:$root.cancelCurrentTask">Avbryt</button> 
+		
+	</div>
+	
+	<!-- /ko -->
+	
+	<!-- ko if:  (currentTask()==undefined && settings.showSettings()==false )-->
+	
+	
+	<div id="taskButtonArea">
+	<button type="button" data-bind="click: addTask">Lägg till uppgift</button> <button type="button" data-bind="click: sortTasks">Sortera</button> <button type="button" data-bind="click: showStatistics">Statistik</button> <button type="button" data-bind="click: showSettings">Inställningar</button>
+	</div>
+	
+	
+	<div id="taskArea">
+	<div data-bind="foreach: filteredTasks">
+
+   <div class="taskItem">
+   <input class="checkbox" type="checkbox" data-bind="checked: done">
+        <span data-bind="text: name"></span>
+		
+		<!--
+		<span data-bind="text: '2014-01-29 18:24'" class="bold"></span>
+		<span data-bind="text: 'Mitt fina projekt'"></span>	
+		<span data-bind="text: 'Hög prioritet'"></span>		
+		-->		
+
+	<div style="float:right;">
+		<button class="buttonheight" type="button" data-bind="click:$root.editTask"><span class="ui-icon ui-icon-pencil"></span></button> 
+		<button class="buttonheight" type="button" data-bind="click:$root.removeTask"><span class="ui-icon ui-icon-trash"></span></button> 
+	</div>
+	<div class="cleared"></div>
+   
+   
+  
+   
+	</div>
+	
+	</div>
+	
+	
+</div>
+  <!-- /ko -->
+	
+
+</body>
+</html>

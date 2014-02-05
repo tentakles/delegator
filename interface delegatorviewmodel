@@ -1,0 +1,26 @@
+	self.showStatistics = function () 
+	
+	self.cancelSettings = function () 
+	self.saveSettings = function () 
+	self.showSettings = function () 
+	
+	self.getFilterDateCount = function (filter) 
+	self.setFilterTasksDate = function (year, month, week, day, time)
+
+	//todo kan de här slås ihop	
+	self.getFilterTasksYear = function (year) 
+	self.getFilterTasksMonth = function (year, month) 
+	self.getFilterTasksWeek = function (year, week) 
+		
+	//todo kan de här slås ihop
+	self.selectYearFilter = function (item) 
+	self.selectMonthFilter = function (item) 
+	self.selectWeekFilter = function (item) 
+	self.selectDayFilter = function (item)
+	
+	self.addTask = function () 
+	self.saveCurrentTask = function () 
+	self.cancelCurrentTask = function () 
+	self.sortTasks = function ()
+	self.editTask = function (item) 
+	self.removeTask = function (item) 
